@@ -47,12 +47,21 @@ export function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 font-extrabold text-primary-700 text-lg shrink-0"
+              className="flex items-center gap-2.5 shrink-0 group"
               aria-label={`${BUSINESS_NAME} — home`}
             >
-              <AlertTriangle className="h-5 w-5 text-accent-500" aria-hidden="true" />
-              <span className="hidden sm:block">{BUSINESS_NAME}</span>
-              <span className="sm:hidden">DSD</span>
+              <div className="flex items-center justify-center h-8 w-8 rounded-md bg-orange-500 text-white shrink-0">
+                <AlertTriangle className="h-4.5 w-4.5" aria-hidden="true" />
+              </div>
+              <div className="hidden sm:flex flex-col leading-none">
+                <span className="text-sm font-extrabold text-[#0f172a] tracking-tight uppercase" style={{ fontFamily: "var(--font-oswald)" }}>
+                  Dallas Storm Damage
+                </span>
+                <span className="text-[10px] font-medium text-slate-400 tracking-widest uppercase">
+                  Homeowner Guidance · DFW
+                </span>
+              </div>
+              <span className="sm:hidden font-extrabold text-[#0f172a] text-sm tracking-tight uppercase" style={{ fontFamily: "var(--font-oswald)" }}>DSD</span>
             </Link>
 
             {/* Desktop nav */}
