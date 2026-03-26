@@ -20,6 +20,7 @@ const SERVICE_LINKS = [
 const INFO_LINKS = [
   { href: "/how-it-works",                label: "How It Works" },
   { href: "/first-24-hours-after-storm",  label: "First 24 Hours" },
+  { href: "/blog",                        label: "Homeowner Guides" },
   { href: "/contact",                     label: "Get Help Now" },
 ];
 

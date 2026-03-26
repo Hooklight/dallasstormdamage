@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllBlogPosts } from "@/lib/blog";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://dallasstormdamage.com";
 
@@ -18,10 +19,19 @@ const STATIC_ROUTES: { url: string; changeFrequency: MetadataRoute.Sitemap[0]["c
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return STATIC_ROUTES.map(({ url, changeFrequency, priority }) => ({
+  const staticEntries = STATIC_ROUTES.map(({ url, changeFrequency, priority }) => ({
     url:            `${baseUrl}${url}`,
     lastModified:   new Date(),
     changeFrequency,
     priority,
   }));
+
+  const blogEntries = getAllBlogPosts().map((post) => ({
+    url:            `${baseUrl}/blog/${post.slug}`,
+    lastModified:   new Date(post.datePublished),
+    changeFrequency: "monthly" as const,
+    priority:       0.7,
+  }));
+
+  return [...staticEntries, { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: "weekly" as const, priority: 0.6 }, ...blogEntries];
 }
